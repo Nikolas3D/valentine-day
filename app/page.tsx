@@ -46,7 +46,7 @@ function FancyCard({
   return (
     <div
       className={[
-        "bg-white shadow-xl border-2 border-rose-100 rounded-[3rem] p-8 md:p-12",
+        "bg-white shadow-xl border-2 border-rose-100 rounded-[3rem] p-6 sm:p-8 md:p-12",
         className,
       ].join(" ")}
     >
@@ -92,10 +92,10 @@ export default function App() {
   // tiny personalization placeholders
   const IMPORTANT_DATE = "14 Februarie";
   const REPAIR_DATE = "24 Februarie";
-  const COUPON_CODE = "SORRY-GUS-24";
+  const COUPON_CODE = "TE-IUBESC-DENISA";
 
   return (
-    <div className="min-h-screen bg-[#fffafa] text-slate-800 flex flex-col items-center justify-center p-6 overflow-hidden">
+    <div className="min-h-screen bg-[#fffafa] text-slate-800 flex flex-col items-center justify-center p-4 sm:p-6 overflow-hidden">
       <AnimatePresence mode="wait">
         {/* =========================
             STEP 1: INTRO (SHE FIRST)
@@ -131,9 +131,10 @@ export default function App() {
                 <div className="mt-8 w-full max-w-md">
                   <button
                     onClick={() => setStep("apology")}
-                    className="group w-full bg-rose-500 hover:bg-rose-600 text-white font-black py-5 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3 text-lg"
+                    className="group w-full bg-rose-500 hover:bg-rose-600 text-white font-black py-5 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3 text-base sm:text-lg text-center leading-snug"
                   >
-                    Vrei să auzi ce are Gus să-ți spună?
+                    <span className="block sm:hidden">Vrei să auzi ce-ți spune Gus?</span>
+                    <span className="hidden sm:block">Vrei să auzi ce are Gus să-ți spună?</span>
                     <ArrowRight className="group-hover:translate-x-2 transition-transform" />
                   </button>
                 </div>
@@ -154,7 +155,7 @@ export default function App() {
             className="w-full max-w-5xl"
           >
             <div className="text-center">
-              <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14 mb-10">
+              <div className="flex flex-row justify-center items-center gap-8 sm:gap-12 md:gap-16 mb-12 md:mb-10">
                 <motion.div
                   animate={{ x: isForgiven ? 40 : 0, rotate: isForgiven ? 0 : -2 }}
                   transition={{ type: "spring", stiffness: 140, damping: 14 }}
@@ -162,24 +163,9 @@ export default function App() {
                   <CharacterImage
                     src={IMAGE_GOOSE_SAD_FLOWERS}
                     label="Gus 🦢"
-                    sizeClass="w-56 h-56 md:w-80 md:h-80"
+                    sizeClass="w-50 h-50 sm:w-64 sm:h-64 md:w-80 md:h-80"
                   />
                 </motion.div>
-
-                <div className="flex flex-col items-center">
-                  <AnimatePresence>
-                    {isForgiven && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-rose-500 font-black mb-2 text-lg md:text-xl"
-                      >
-                        Mulțumesc… chiar contează. ✨
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                  <div className="h-1.5 w-24 bg-rose-100 rounded-full" />
-                </div>
 
                 <motion.div
                   animate={{ scale: isForgiven ? 1.05 : 1 }}
@@ -188,7 +174,7 @@ export default function App() {
                   <CharacterImage
                     src={IMAGE_BADGER_SOFT_SAD}
                     label="Bursuc 🦡"
-                    sizeClass="w-56 h-56 md:w-80 md:h-80"
+                    sizeClass="w-50 h-50 sm:w-64 sm:h-64 md:w-80 md:h-80"
                   />
                 </motion.div>
               </div>
@@ -207,7 +193,7 @@ export default function App() {
                 <span className="text-rose-500 font-black">repar</span>.
               </p>
 
-              <div className="mt-10 flex flex-col md:flex-row gap-6 justify-center items-center h-32">
+              <div className="mt-10 flex flex-col md:flex-row gap-7 md:gap-6 justify-center items-center md:h-32">
                 <button
                   onClick={() => {
                     setIsForgiven(true);
@@ -278,9 +264,11 @@ export default function App() {
                 <div className="mt-10">
                   <button
                     onClick={() => setStep("voucher")}
-                    className="group bg-slate-900 hover:bg-slate-950 text-white font-black text-xl px-12 py-5 rounded-3xl shadow-2xl inline-flex items-center gap-3 transition-all"
+                    className="group bg-slate-900 hover:bg-slate-950 text-white font-black text-lg sm:text-xl px-8 sm:px-12 py-5 rounded-3xl shadow-2xl inline-flex items-center gap-3 transition-all text-center leading-snug"
                   >
-                    Da, vreau să fim noi 🤍 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                    <span className="block sm:hidden">Da, vreau 🤍</span>
+                    <span className="hidden sm:block">Da, vreau să fim noi 🤍</span>
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </div>
@@ -298,7 +286,7 @@ export default function App() {
             animate={{ y: 0, opacity: 1 }}
             className="max-w-xl w-full"
           >
-            <div className="bg-slate-900 text-white p-10 md:p-14 rounded-[3.5rem] shadow-2xl relative overflow-hidden border-2 border-rose-400">
+            <div className="bg-slate-900 text-white p-8 sm:p-10 md:p-14 rounded-[3.5rem] shadow-2xl relative overflow-hidden border-2 border-rose-400">
               <div className="absolute top-0 right-0 p-8 opacity-20 rotate-12">
                 <Heart size={120} fill="currentColor" className="text-rose-500" />
               </div>
